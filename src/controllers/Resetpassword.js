@@ -15,13 +15,12 @@ resetrouter
     if (admin) {
       try {
         const oauth2Client = new OAuth2(
-          "682804697180-rvn5k7h139t0u3r3h0l5fobgljepnlg5.apps.googleusercontent.com",
-          "cBFZzoJwFuZmexb6RTKKv357", // Client Secret
+          process.env.ClientID,
+          process.env.SECRET, // Client Secret
           "https://developers.google.com/oauthplayground" // Redirect URL
         );
         oauth2Client.setCredentials({
-          refresh_token:
-            "1//04Bxo8nlj6W9OCgYIARAAGAQSNwF-L9IrHWc4KQZ6fDP3mhlQLO7_Sp9ox5_-91Nace3frBFobS9Av2ynjeEuOGzOU5vsgbbhrEA"
+          refresh_token:process.env.TOKEN
         });
         const accessToken = oauth2Client.getAccessToken();
 
@@ -33,11 +32,9 @@ resetrouter
           auth: {
             type: "OAuth2",
             user: "neelianilkumar96@gmail.com",
-            clientId:
-              "682804697180-rvn5k7h139t0u3r3h0l5fobgljepnlg5.apps.googleusercontent.com",
-            clientSecret: "cBFZzoJwFuZmexb6RTKKv357",
-            refreshToken:
-              "ya29.a0AfH6SMCxeInS1b1FyazPBK-ys-5sIasFcOS6pC6OBo3qhPlkhzjrwHubOZE6bAfmohcKGKc_vOpnkIi-0h_SRKJZBeLicv3J51Hg6xUBN8B6V_3hu4m-iYson4sT_csrPP_TABv26cMPrMWtB6AJVGMCTqVKDkaXyfk",
+            clientId:process.env.ClientID,
+            clientSecret: process.env.SECRET,
+            refreshToken:process.env.TOKEN,
             accessToken: accessToken
           },
           tls: {
